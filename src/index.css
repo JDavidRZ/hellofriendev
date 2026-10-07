@@ -1,0 +1,95 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+  color: #17202a;
+  background: #ffffff;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html.dark {
+  color: #e2e8f0;
+  background: #0f172a;
+}
+
+.site-shell {
+  background: linear-gradient(180deg, #eff6ff 0%, #f8fafc 36%, #ffffff 100%);
+}
+
+html.dark .site-shell {
+  background: linear-gradient(180deg, #172554 0%, #111b34 36%, #0f172a 100%);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+}
+
+a {
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 3px solid #2563eb;
+  outline-offset: 3px;
+}
+
+@keyframes page-enter {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.page-enter {
+  animation: page-enter 240ms ease-out both;
+}
+
+.motion-card {
+  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+}
+
+.motion-card:hover,
+.motion-card:focus-within {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgb(15 23 42 / 8%);
+}
+
+.motion-interactive {
+  transition: transform 150ms ease, background-color 150ms ease, box-shadow 150ms ease;
+}
+
+.motion-interactive:hover {
+  transform: translateY(-1px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-enter {
+    animation: none;
+  }
+
+  .motion-card,
+  .motion-interactive {
+    transition: none;
+  }
+
+  .motion-card:hover,
+  .motion-card:focus-within,
+  .motion-interactive:hover {
+    transform: none;
+  }
+}
